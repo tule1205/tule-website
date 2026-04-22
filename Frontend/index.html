@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        border-radius: 0;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        scroll-behavior: smooth;
+      }
+
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 1.25rem, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        animation: fade-up 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      }
+
+      .reveal.delay-1 { animation-delay: 0.08s; }
+      .reveal.delay-2 { animation-delay: 0.18s; }
+      .reveal.delay-3 { animation-delay: 0.28s; }
+      .reveal.delay-4 { animation-delay: 0.38s; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          animation: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: #ffffff;
+        color: #0d0d0d;
+        font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+        font-size: 1rem;
+        line-height: 1.55;
+        font-weight: 400;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.25em;
+      }
+
+      a:hover,
+      a:focus-visible {
+        text-decoration-thickness: 2px;
+      }
+
+      a:focus-visible {
+        outline: 2px solid #0d0d0d;
+        outline-offset: 4px;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 112rem;
+        margin: 0 auto;
+        padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 6vw, 8rem)
+          clamp(3rem, 8vw, 7rem);
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3rem, 6vw, 5rem);
+      }
+
+      .top-nav {
+        display: flex;
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+        align-items: center;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      .top-nav a {
+        position: relative;
+        text-decoration: none;
+        color: #6a6a6a;
+        padding: 0.25rem 0;
+        transition: color 0.18s ease;
+      }
+
+      .top-nav a:hover,
+      .top-nav a:focus-visible {
+        color: #000000;
+      }
+
+      .top-nav a.is-active {
+        color: #000000;
+      }
+
+      .top-nav a.is-active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.4rem;
+        height: 1.5px;
+        background: #000000;
+      }
+
+      .intro {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: center;
+      }
+
+      .intro-text {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(3rem, 6vw, 5rem);
+        width: 100%;
+      }
+
+      .intro-figure {
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 30rem;
+        margin: 0;
+      }
+
+      .intro-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+          filter 0.6s ease;
+        filter: saturate(0.95);
+      }
+
+      .intro-figure:hover img,
+      .intro-figure:focus-within img {
+        transform: scale(1.025);
+        filter: saturate(1.05);
+      }
+
+      @media (min-width: 900px) {
+        .intro {
+          flex-direction: row;
+          align-items: flex-end;
+          gap: clamp(2.5rem, 6vw, 5rem);
+        }
+
+        .intro-text {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+
+        .intro-figure {
+          width: clamp(24rem, 42vw, 40rem);
+          max-width: none;
+          align-self: flex-end;
+          margin-bottom: clamp(-3rem, -3vw, -1.5rem);
+        }
+      }
+
+      .hero {
+        padding-top: 0;
+        max-width: none;
+        text-align: center;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.02;
+        color: #000000;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 700px) {
+        .hero h1 {
+          white-space: normal;
+        }
+      }
+
+      .hero-resume {
+        margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+        font-size: clamp(1rem, 1.35vw, 1.125rem);
+        color: #1a1a1a;
+      }
+
+      .section-label {
+        margin: 0 0 1.5rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #2a2a2a;
+      }
+
+      .about {
+        max-width: 38rem;
+      }
+
+      .about p {
+        margin: 0;
+        font-size: clamp(1rem, 1.35vw, 1.125rem);
+        color: #1a1a1a;
+        text-align: justify;
+        hyphens: auto;
+      }
+
+      .projects-header {
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+        max-width: 32rem;
+      }
+
+      .projects-header p {
+        margin: 0.75rem 0 0;
+        font-size: 0.9375rem;
+        color: #2a2a2a;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+      }
+
+      .project {
+        grid-column: span 12;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: transparent;
+      }
+
+      @media (min-width: 640px) {
+        .project {
+          grid-column: span 6;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .project {
+          grid-column: span 4;
+        }
+      }
+
+      .project h3 {
+        margin: 0 0 0;
+        font-size: clamp(1.125rem, 2vw, 1.375rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: #000000;
+      }
+
+      .project p {
+        margin: 0;
+        font-size: 0.9375rem;
+        color: #2a2a2a;
+        text-align: justify;
+        hyphens: auto;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+        padding-top: 0;
+        margin-top: 14rem;
+        font-size: 0.9375rem;
+        color: #1a1a1a;
+      }
+
+      @media (max-width: 780px) {
+        .footer {
+          margin-top: 0;
+        }
+      }
+
+      .footer nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: baseline;
+        gap: 1rem;
+        font-size: clamp(1.125rem, 1.75vw, 1.375rem);
+        font-weight: 500;
+        letter-spacing: -0.01em;
+      }
+
+      .footer nav .sep {
+        color: #8a8a8a;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      .footer nav a {
+        text-decoration: none;
+        position: relative;
+      }
+
+      .footer nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.2em;
+        height: 1.5px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+
+      .footer nav a:hover::after,
+      .footer nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .copyright {
+        margin: 0;
+        font-size: 0.8125rem;
+        color: #6a6a6a;
+        letter-spacing: 0.02em;
+      }
+
+      p   { font-family: "Space Grotesk", system-ui, sans-serif; }
+      h1  { font-family: "Space Grotesk", system-ui, sans-serif; }
+      h2  { font-family: "Space Grotesk", system-ui, sans-serif; }
+      a   { transition: color 0.2s ease; }
+      img { max-width: 100%; }
+      input {
+        font-family: inherit;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid #d0d0d0;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #0d0d0d;
+        width: 100%;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      input:focus {
+        outline: none;
+        border-color: #0d0d0d;
+        box-shadow: 0 0 0 3px rgba(13, 13, 13, 0.08);
+      }
+
+      .contact-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: start;
+      }
+
+      @media (max-width: 780px) {
+        .contact-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .signup {
+        flex: 1 1 22rem;
+        min-width: 0;
+        max-width: 36rem;
+        text-align: left;
+      }
+      .signup-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        text-align: left;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .form-label {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #2a2a2a;
+      }
+      .form-error {
+        min-height: 1.1rem;
+        font-size: 0.8125rem;
+        color: #b00020;
+      }
+      .submit-btn {
+        align-self: flex-start;
+        padding: 0.75rem 2.5rem;
+        background: #0d0d0d;
+        color: #ffffff;
+        border: none;
+        border-radius: 999px;
+        font-family: inherit;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.1s ease;
+      }
+      .submit-btn:hover { background: #2a2a2a; }
+      .submit-btn:active { transform: translateY(1px); }
+      .form-status {
+        margin-top: 0.75rem;
+        font-size: 0.9375rem;
+        color: #0a7d3b;
+      }
+
+      #signup-heading {
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="top-nav reveal" aria-label="Primary">
+        <a href="./index.html" class="is-active">Portfolio</a>
+        <a href="./experience.html">Experience</a>
+        <a href="./TuLeResume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+
+      <div class="intro">
+        <div class="intro-text">
+          <header class="hero reveal delay-1">
+            <h1>Welcome to my portfolio</h1>
+          </header>
+
+          <section class="about reveal delay-2" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="section-label">✧ About me ✧</h2>
+            <p>
+              I'm Tu Le, a Computer Science student at the University of Texas at Dallas. 
+              I work across the stack in Java, JavaScript, React Native, and HTML, 
+              building responsive web and mobile apps, wiring up authentication, and 
+              integrating databases and APIs. I care about scalable systems, real-time 
+              simulations, and the kind of clean architecture that makes performance 
+              feel effortless. I'm currently looking for an internship in web, mobile, 
+              or game development where I can keep learning and shipping alongside a 
+              strong team.
+            </p>
+          </section>
+        </div>
+
+        <figure class="intro-figure reveal delay-3">
+          <img
+            src="./3d-illustration-woman-coding-her-desk-with-multiple-monitors_14117-1047993.jpg"
+            alt="3D illustration of a developer coding at a desk with multiple monitors"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+
+      <section class="projects reveal delay-4" aria-labelledby="projects-heading">
+        <div class="projects-header">
+          <h2 id="projects-heading" class="section-label">✧ My Projects ✧</h2>
+          <p>
+            List of projects I have worked on.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project">
+            <h3>Flight Ticket System</h3>
+            <p>
+              A high-density booking architecture prioritizing functional typographic 
+              hierarchy and real-time data monitoring over visual ornament.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Browser Navigation Engine</h3>
+            <p>
+              A Java-based navigation architecture. Utilizes custom stack and queue 
+              data structures for strict memory control and file serialization for 
+              session state restoration.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Nintendo Switch Agent</h3>
+            <p>
+              An AI chatbot interface built with JavaScript and Firebase. Manages 
+              real-time cross-device communication and secure user authentication 
+              behind a minimal layout.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Finance Tracker</h3>
+            <p>
+              A full-stack dashboard integrating SQLite and Gemini LLM. Relies on 
+              four core RESTful APIs to efficiently ingest, structure, and analyze 
+              personal financial transactions.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Task Orbit</h3>
+            <p>
+              A desktop-first Kanban environment powered by Supabase. Avoids framework 
+              overhead by utilizing vanilla JavaScript for rigid, dynamic drag-and-drop 
+              workflows.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Ethical Frame</h3>
+            <p>
+              A privacy-focused video recording application. Implements real-time 
+              background blurring during capture to automatically obscure bystanders, 
+              maintaining subject focus and ensuring anonymity.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="contact-row reveal">
+        <section class="signup" aria-labelledby="signup-heading">
+          <h2 id="signup-heading" class="section-label">✧ Get in touch ✧</h2>
+          <p>Leave your info and I'll reach out.</p>
+
+          <form class="signup-form" id="signup-form" novalidate>
+            <div class="form-field">
+              <label class="form-label" for="name">Name</label>
+              <input type="text" id="name" name="name" autocomplete="name" />
+              <span class="form-error" id="name-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="email">Email (.edu)</label>
+              <input type="email" id="email" name="email" autocomplete="email" />
+              <span class="form-error" id="email-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="age">Age</label>
+              <input type="number" id="age" name="age" min="1" max="99" />
+              <span class="form-error" id="age-error"></span>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <footer class="footer">
+          <nav aria-label="Social links">
+            <a href="https://github.com/tule1205">GitHub</a>
+            <span class="sep" aria-hidden="true">·</span>
+            <a href="https://www.linkedin.com/in/tu-le-a29651290/">LinkedIn</a>
+          </nav>
+          <p class="copyright">&copy; 2026 Tu Le. All rights reserved.</p>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        const form = document.getElementById("signup-form");
+        if (!form) return;
+
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const ageInput = document.getElementById("age");
+
+        const nameError = document.getElementById("name-error");
+        const emailError = document.getElementById("email-error");
+        const ageError = document.getElementById("age-error");
+        const status = document.getElementById("form-status");
+
+        const nameRegex = /^[A-Za-z\s]+$/;
+
+        function validateName(value) {
+          const v = value.trim();
+          if (!v) return "Please enter your name.";
+          if (!nameRegex.test(v)) return "Name must contain only letters.";
+          return "";
+        }
+
+        function validateEmail(value) {
+          const v = value.trim();
+          if (!v) return "Please enter your email.";
+          if (!v.includes("@")) return "Email must be valid.";
+          if (!v.toLowerCase().includes(".edu"))
+            return "Email must include .edu";
+          return "";
+        }
+
+        function validateAge(value) {
+          const v = value.trim();
+          if (!v) return "Please enter your age.";
+          const n = Number(v);
+          if (!Number.isInteger(n)) return "Age must be a whole number.";
+          if (n < 1 || n > 99) return "Age must be between 1 and 99.";
+          return "";
+        }
+
+        function showError(input, errorEl, message) {
+          errorEl.textContent = message;
+          input.style.borderColor = message ? "#b00020" : "#d0d0d0";
+        }
+
+        nameInput.addEventListener("input", () =>
+          showError(nameInput, nameError, validateName(nameInput.value))
+        );
+        emailInput.addEventListener("input", () =>
+          showError(emailInput, emailError, validateEmail(emailInput.value))
+        );
+        ageInput.addEventListener("input", () =>
+          showError(ageInput, ageError, validateAge(ageInput.value))
+        );
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          status.textContent = "";
+
+          const nMsg = validateName(nameInput.value);
+          const eMsg = validateEmail(emailInput.value);
+          const aMsg = validateAge(ageInput.value);
+
+          showError(nameInput, nameError, nMsg);
+          showError(emailInput, emailError, eMsg);
+          showError(ageInput, ageError, aMsg);
+
+          if (nMsg || eMsg || aMsg) {
+            status.style.color = "#b00020";
+            status.textContent = "Please fix the errors above.";
+            return;
+          }
+
+          status.style.color = "#0a7d3b";
+          status.textContent = `Thanks, ${nameInput.value.trim()}! Your info has been received.`;
+          form.reset();
+        });
+      })();
+    </script>
+  </body>
+</html>
