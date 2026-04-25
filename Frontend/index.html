@@ -130,6 +130,22 @@
         background: #000000;
       }
 
+      .top-nav .net-id {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        color: #000000;
+        background: #f1f1f1;
+        border: 1px solid #e1e1e1;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .top-nav .net-id:first-of-type {
+        margin-left: auto;
+      }
+
       .intro {
         display: flex;
         flex-direction: column-reverse;
@@ -450,6 +466,8 @@
         <a href="./index.html" class="is-active">Portfolio</a>
         <a href="./experience.html">Experience</a>
         <a href="./TuLeResume.pdf" target="_blank" rel="noopener">Resume</a>
+        <span class="net-id" aria-label="UTD Net ID">Net ID: TNL220001</span>
+        <span class="net-id name-tag" aria-label="Name">Name: Tu Le</span>
       </nav>
 
       <div class="intro">
@@ -661,6 +679,72 @@
           form.reset();
         });
       })();
+    </script>
+
+    <script>
+      // ============================================================
+      // DOM Quiz Demo
+      // Finds elements 4 ways (id, class name, tag name, CSS selector)
+      // Then changes their content, attribute, and style.
+      // ============================================================
+      document.addEventListener("DOMContentLoaded", function () {
+        // ---------- 1) BY ID: getElementById ----------
+        // Find the "My Projects" heading and change its CONTENT + STYLE.
+        const projectsHeading = document.getElementById("projects-heading");
+        if (projectsHeading) {
+          projectsHeading.textContent = "✧ Selected Projects ✧"; // content
+          projectsHeading.style.color = "#ffcc00";                // style
+          projectsHeading.style.letterSpacing = "0.08em";         // style
+        }
+
+        // ---------- 2) BY CLASS NAME: getElementsByClassName ----------
+        // Find every .project card and change its STYLE.
+        const projectCards = document.getElementsByClassName("project");
+        for (let i = 0; i < projectCards.length; i++) {
+          projectCards[i].style.border = "1px solid rgba(255,255,255,0.15)";
+          projectCards[i].style.padding = "1rem";
+          projectCards[i].style.borderRadius = "8px";
+          projectCards[i].style.transition = "transform 0.2s ease";
+        }
+
+        // ---------- 3) BY TAG NAME: getElementsByTagName ----------
+        // Find every <h3> inside the projects grid and change its STYLE + CONTENT.
+        const grid = document.getElementsByClassName("projects-grid")[0];
+        if (grid) {
+          const headings = grid.getElementsByTagName("h3");
+          for (let h of headings) {
+            h.style.textTransform = "uppercase";
+            h.style.fontSize = "1.05rem";
+            h.textContent = h.textContent + " →"; // content tweak
+          }
+        }
+
+        // ---------- 4) BY CSS SELECTOR: querySelector / querySelectorAll ----------
+        // (a) Change an ATTRIBUTE on the hero image.
+        const heroImg = document.querySelector(".intro-figure img");
+        if (heroImg) {
+          heroImg.setAttribute("alt", "Updated: Tu Le's portfolio hero illustration");
+          heroImg.setAttribute("title", "Welcome to my portfolio");
+          heroImg.style.borderRadius = "12px";   // style
+          heroImg.style.boxShadow = "0 8px 24px rgba(0,0,0,0.25)"; // style
+        }
+
+        // (b) Change an ATTRIBUTE (href) and CONTENT on the Resume nav link.
+        const resumeLink = document.querySelector('nav.top-nav a[href$=".pdf"]');
+        if (resumeLink) {
+          resumeLink.setAttribute("href", "./TuLeResume.pdf"); // attribute
+          resumeLink.setAttribute("target", "_blank");         // attribute
+          resumeLink.textContent = "Download Resume";          // content
+          resumeLink.style.fontWeight = "600";                 // style
+        }
+
+        // (c) Change CONTENT of every paragraph inside .projects-header.
+        const subtitles = document.querySelectorAll(".projects-header p");
+        subtitles.forEach(function (p) {
+          p.textContent = "A curated list of work I've shipped recently.";
+          p.style.fontStyle = "italic";
+        });
+      });
     </script>
   </body>
 </html>
