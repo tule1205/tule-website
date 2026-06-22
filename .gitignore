@@ -1,0 +1,18 @@
+# Local DB seed (regenerated on every sync; contains real PII from remote)
+Backend/supabase/seed.sql
+
+# Human-readable view of contact submissions (real PII)
+Backend/contact-submissions.md
+
+# Sync logs (may reference data/timestamps)
+Backend/logs/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+*.swp

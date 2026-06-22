@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://pirjcacaiugtspgvjzsk.supabase.co wss://pirjcacaiugtspgvjzsk.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+    />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./homepage.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.2/dist/umd/supabase.js"
+      integrity="sha384-nD3dwv4+ZqdYnmZKe/249ImlV04om7xTCcsoSeQYI+RO+XlKPoqAWaJR1M5SJH9p"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <main class="page">
+      <nav class="top-nav reveal" aria-label="Primary">
+        <a href="./homepage.html" class="is-active">Portfolio</a>
+        <a href="./experience.html">Experience</a>
+        <a href="../assets/TuLeResume.pdf" target="_blank" rel="noopener">Resume</a>
+      </nav>
+
+      <div class="intro">
+        <div class="intro-text">
+          <header class="hero reveal delay-1">
+            <h1>Welcome to my portfolio</h1>
+          </header>
+
+          <section class="about reveal delay-2" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="section-label">✧ About me ✧</h2>
+            <p>
+              I'm Tu Le, a Computer Science student at the University of Texas at Dallas. 
+              I work across the stack in Java, JavaScript, React Native, and HTML, 
+              building responsive web and mobile apps, wiring up authentication, and 
+              integrating databases and APIs. I care about scalable systems, real-time 
+              simulations, and the kind of clean architecture that makes performance 
+              feel effortless. I'm currently looking for an internship in web, mobile, 
+              or game development where I can keep learning and shipping alongside a 
+              strong team.
+            </p>
+          </section>
+        </div>
+
+        <figure class="intro-figure reveal delay-3">
+          <img
+            src="../assets/3d-illustration-woman-coding-her-desk-with-multiple-monitors_14117-1047993.jpg"
+            alt="3D illustration of a developer coding at a desk with multiple monitors"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+
+      <section class="projects reveal delay-4" aria-labelledby="projects-heading">
+        <div class="projects-header">
+          <h2 id="projects-heading" class="section-label">✧ My Projects ✧</h2>
+          <p>
+            List of projects I have worked on.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project">
+            <h3>Flight Ticket System</h3>
+            <p>
+              A high-density booking architecture prioritizing functional typographic 
+              hierarchy and real-time data monitoring over visual ornament.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Browser Navigation Engine</h3>
+            <p>
+              A Java-based navigation architecture. Utilizes custom stack and queue 
+              data structures for strict memory control and file serialization for 
+              session state restoration.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Nintendo Switch Agent</h3>
+            <p>
+              An AI chatbot interface built with JavaScript and Firebase. Manages 
+              real-time cross-device communication and secure user authentication 
+              behind a minimal layout.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Finance Tracker</h3>
+            <p>
+              A full-stack dashboard integrating SQLite and Gemini LLM. Relies on 
+              four core RESTful APIs to efficiently ingest, structure, and analyze 
+              personal financial transactions.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Task Orbit</h3>
+            <p>
+              A desktop-first Kanban environment powered by Supabase. Avoids framework 
+              overhead by utilizing vanilla JavaScript for rigid, dynamic drag-and-drop 
+              workflows.
+            </p>
+          </article>
+          <article class="project">
+            <h3>Ethical Frame</h3>
+            <p>
+              A privacy-focused video recording application. Implements real-time 
+              background blurring during capture to automatically obscure bystanders, 
+              maintaining subject focus and ensuring anonymity.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="contact-row reveal">
+        <section class="signup" aria-labelledby="signup-heading">
+          <h2 id="signup-heading" class="section-label">✧ Get in touch ✧</h2>
+          <p>Leave your info if you want to connect</p>
+
+          <form class="signup-form" id="signup-form" novalidate autocomplete="on">
+            <div class="form-field">
+              <label class="form-label" for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                maxlength="200"
+                spellcheck="false"
+              />
+              <span class="form-error" id="name-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                maxlength="320"
+                inputmode="email"
+                spellcheck="false"
+              />
+              <span class="form-error" id="email-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                minlength="5"
+                maxlength="1000"
+                placeholder="What would you like to say?"
+              ></textarea>
+              <span class="form-error" id="message-error"></span>
+            </div>
+
+            <div class="form-field hp-field" aria-hidden="true">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <footer class="footer">
+          <nav aria-label="Social links">
+            <a href="https://github.com/tule1205">GitHub</a>
+            <span class="sep" aria-hidden="true">·</span>
+            <a href="https://www.linkedin.com/in/tu-le-a29651290/">LinkedIn</a>
+          </nav>
+          <p class="copyright">&copy; 2026 Tu Le. All rights reserved.</p>
+        </footer>
+      </div>
+    </main>
+    <script src="./homepage.js"></script>
+  </body>
+</html>
