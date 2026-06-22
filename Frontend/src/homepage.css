@@ -184,19 +184,12 @@ a:focus-visible {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 1.02;
+  line-height: 1.05;
   color: #000000;
-  white-space: nowrap;
-}
-
-@media (max-width: 899px) {
-  .hero h1 {
-    white-space: normal;
-    text-wrap: balance;
-  }
+  text-wrap: balance;
 }
 
 .hero-resume {
