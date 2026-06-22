@@ -43,8 +43,8 @@ html {
 
 body {
   margin: 0;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
   background-color: #ffffff;
   color: #0d0d0d;
   font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
@@ -73,14 +73,23 @@ a:focus-visible {
 .page {
   width: 100%;
   max-width: 112rem;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 6vw, 8rem)
     clamp(1.5rem, 3vw, 2.5rem);
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 4vw, 3rem);
-  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .page {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
 }
 
 .top-nav {
@@ -96,7 +105,10 @@ a:focus-visible {
   position: relative;
   text-decoration: none;
   color: #6a6a6a;
-  padding: 0.25rem 0;
+  padding: 0.75rem 0.25rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color 0.18s ease;
 }
 
@@ -112,9 +124,9 @@ a:focus-visible {
 .top-nav a.is-active::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.4rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.4rem;
   height: 1.5px;
   background: #000000;
 }
@@ -176,7 +188,7 @@ a:focus-visible {
   letter-spacing: -0.03em;
   line-height: 1.05;
   color: #000000;
-  white-space: nowrap;
+  text-wrap: balance;
 }
 
 .experience-header p {
