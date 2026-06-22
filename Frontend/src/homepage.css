@@ -279,15 +279,8 @@ a:focus-visible {
   text-align: center;
   gap: 0.75rem;
   padding-top: 0;
-  margin-top: 14rem;
   font-size: 0.9375rem;
   color: #1a1a1a;
-}
-
-@media (max-width: 780px) {
-  .footer {
-    margin-top: 0;
-  }
 }
 
 .footer nav {
@@ -368,20 +361,12 @@ textarea:focus {
 }
 
 .contact-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
+  display: flex;
+  justify-content: center;
 }
 
-@media (max-width: 780px) {
-  .contact-row {
-    grid-template-columns: 1fr;
-  }
-}
 .signup {
-  flex: 1 1 22rem;
-  min-width: 0;
+  width: 100%;
   max-width: 36rem;
   text-align: left;
 }
