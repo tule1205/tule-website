@@ -1,0 +1,4 @@
+# Backups may contain real user data (emails, messages) from the remote DB.
+# Do NOT commit them to git.
+*
+!.gitignore
