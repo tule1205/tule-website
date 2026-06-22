@@ -7,11 +7,6 @@
     { "source": "/homepage", "destination": "/src/homepage.html" },
     { "source": "/experience", "destination": "/src/experience.html" }
   ],
-  "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/src/homepage.html", "destination": "/", "permanent": true },
-    { "source": "/src/experience.html", "destination": "/experience", "permanent": true }
-  ],
   "headers": [
     {
       "source": "/(.*)",
