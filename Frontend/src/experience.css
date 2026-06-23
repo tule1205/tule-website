@@ -83,15 +83,6 @@ a:focus-visible {
   gap: clamp(2rem, 4vw, 3rem);
 }
 
-@media (min-width: 1024px) {
-  .page {
-    height: 100vh;
-    height: 100dvh;
-    min-height: 0;
-    overflow: hidden;
-  }
-}
-
 .top-nav {
   display: flex;
   gap: clamp(1.25rem, 2.5vw, 2rem);
@@ -132,59 +123,33 @@ a:focus-visible {
 }
 
 .experience {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: clamp(2rem, 4vw, 3rem);
   flex: 1 1 auto;
   min-height: 0;
+  width: 100%;
 }
 
 .experience-header {
-  order: -1;
   text-align: center;
   margin-inline: auto;
   max-width: 36rem;
 }
 
-@media (min-width: 1024px) {
-  .experience {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    gap: clamp(3rem, 6vw, 6rem);
-    align-items: center;
-  }
-
-  .experience-header {
-    order: 0;
-    text-align: center;
-    margin-inline: 0;
-    max-width: none;
-    align-self: center;
-  }
-}
-
 .timeline-box {
   position: relative;
   min-height: 0;
+  width: 100%;
+  max-width: 44rem;
+  margin-inline: auto;
   border: none;
   background: transparent;
 }
 
 .timeline-scroll {
   padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.25rem, 2.5vw, 2rem);
-}
-
-@media (min-width: 1024px) {
-  .timeline-box {
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .timeline-scroll {
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #c8c8c8 transparent;
-  }
 }
 
 .timeline-scroll::-webkit-scrollbar {
@@ -226,27 +191,15 @@ a:focus-visible {
   margin-inline: auto;
   font-size: clamp(1rem, 1.35vw, 1.125rem);
   color: #4a4a4a;
-  max-width: 28rem;
+  max-width: 32rem;
   text-wrap: balance;
-}
-
-@media (min-width: 1024px) {
-  .experience-header p {
-    max-width: none;
-  }
 }
 
 .timeline {
   position: relative;
   list-style: none;
   margin: 0;
-  padding: 0 1.75rem 0 1.75rem;
-}
-
-@media (min-width: 1024px) {
-  .timeline {
-    padding: 0 0 0 1.75rem;
-  }
+  padding: 0 1.75rem;
 }
 
 .timeline::before {
