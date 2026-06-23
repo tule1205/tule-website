@@ -195,6 +195,14 @@ a:focus-visible {
   text-wrap: balance;
 }
 
+@media (max-width: 1023px) {
+  .experience-header h1,
+  .experience-header p {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}
+
 .timeline {
   position: relative;
   list-style: none;
