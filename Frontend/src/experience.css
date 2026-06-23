@@ -155,6 +155,10 @@ a:focus-visible {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: clamp(3rem, 6vw, 6rem);
     align-items: center;
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    align-self: center;
   }
 
   .experience-header {
