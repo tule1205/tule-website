@@ -167,6 +167,8 @@ a:focus-visible {
 
   .experience-header p {
     margin-inline: auto;
+    max-width: none;
+    text-wrap: balance;
   }
 }
 
