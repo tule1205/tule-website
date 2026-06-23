@@ -179,13 +179,6 @@ a:focus-visible {
   text-wrap: balance;
 }
 
-@media (min-width: 1024px) {
-  .experience-header h1 {
-    font-size: clamp(2rem, 2.9vw, 2.55rem);
-    line-height: 1.05;
-  }
-}
-
 .experience-header p {
   margin-top: clamp(1rem, 2vw, 1.5rem);
   margin-inline: auto;
@@ -200,6 +193,55 @@ a:focus-visible {
   .experience-header p {
     max-width: 20rem;
     margin-inline: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .experience {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .experience-header {
+    margin-inline: 0;
+    max-width: none;
+    align-self: center;
+  }
+
+  .experience-header h1 {
+    font-size: clamp(2rem, 2.9vw, 2.55rem);
+    line-height: 1.05;
+  }
+
+  .experience-header p {
+    max-width: none;
+  }
+
+  .timeline-box {
+    height: 100%;
+    overflow: hidden;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .timeline-scroll {
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c8c8c8 transparent;
+  }
+
+  .timeline {
+    padding: 0 0 0 1.75rem;
   }
 }
 
